@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>logo</title>
+    <style>
+      .logo-container {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: radial-gradient(circle, red, white);
+        position: relative;
+      }
+
+      .logo-container img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #logo-text {
+        text-align: center;
+        font-family: Helvetica, Georgia;
+        font-size: 10px;
+        color: white;
+        font-weight: bolder;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logo-container">
+      <img src="logoImg.png" alt="HackMyHead Logo" />
+      <div id="logo-text">HackMyHead</div>
+    </div>
+  </body>
+</html>
