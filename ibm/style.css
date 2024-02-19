@@ -1,0 +1,58 @@
+/* Apply default box styles */
+.box {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Style specific boxes */
+.header {
+    background-color: #f0f0f0;
+}
+
+.sidebar {
+    background-color: #e6e6e6;
+}
+
+.article {
+    background-color: #ffffff;
+}
+
+.footer {
+    background-color: #f0f0f0;
+}
+
+.aside-1 {
+    background-color: #f9f9f9;
+}
+
+.aside-2 {
+    background-color: #f4f4f4;
+}
+
+.aside-3 {
+    background-color: #eeeeee;
+}
+
+/* Positioning and layout */
+.layout {
+    display: flex;
+}
+
+.left {
+    flex: 1;
+}
+
+.right {
+    flex: 0.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.my-50 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
