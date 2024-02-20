@@ -4,7 +4,7 @@
 *{
     margin:0;
     padding:0;
-     font-family: "Roboto", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 body{
     background-color:#212121;;
@@ -53,7 +53,23 @@ gap:10px;
 
 h3{
   color:#aaa;
+  margin: 5px;
+  padding: 5px;
 
+}
+.circle-background{
+    
+                color: azure;
+                background-color: brown;
+                border: 1px solid brown;
+                border-radius: 50%;
+                padding: 7px;
+                width: 35px;
+                height: 35px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              
 }
 #right-nav{
 display: flex;
@@ -63,36 +79,62 @@ margin: 25px;
 #horizonatal-navbar{
     
 display: flex;
-justify-content: flex-start;
+/* justify-content: flex-start;  */
 
-    margin:25px;
+    /* margin:25px; */
     gap:10px;
-    margin-left:20%;
+    /* margin-left:20%; */
+    /* background-color: gold; */
 
 }
+#responsive-horizonatal-navbar2{
+     margin-left:10%;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: flex-start;
+    flex-direction: row;
+    padding:10px;
+    text-align: center;
+    gap:10px;
+    /* background-color: aqua; */
+    
+    
+}
+#responsive-horizonatal-navbar1{
+    margin-left: 20%;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    flex-direction: row;
+    padding:5px;
+    text-align: center;
+    gap:5px;
+    /* background-color:green; */
+    display: none;
+}
+
+
 .icons-horizontal{
     justify-content: center;
-    /* max-width: 20rem; */
     font-size: 1rem;
     background-color:#fff;
     border: 1px solid #fff;
     border-radius: 5px;
-    padding:10px;
-/* font-weight: bold; */
-text-align: center;
+    padding:5px;
+    text-align: center;
 }
 .icons-horizontal1{
     justify-content: center;
-    /* max-width: 15rem; */
     font-size: 1rem;
     color: #fff;
     background-color:#73737346;
     border: 1px solid #73737346;
     border-radius: 5px;
-    padding:10px;
-/* font-weight: bold; */
-text-align: center;
+    padding:5px;
+    text-align: center;
 }
+
+
 #main-container{
     display: flex;
     flex-direction: row;
@@ -110,14 +152,12 @@ text-align: center;
     
     font-size: 0.5rem;
     margin-left:20px;
-    /* background-color:black; */
 }
 .icons-vertical{
-    /* background-color:red; */
     text-align: center;
-
     padding: 10px;
 }
+
 #para{
     margin-left: -15px;
 }
@@ -129,28 +169,20 @@ text-align: center;
     justify-content: center;
     gap: 20px;
     margin-top: 1%;
-    /* max-width:90%;
-    width: 90%;
-    margin: 0.5%;
-    align-items: center; */
-    /* margin-bottom: 5%; */
-    /* background-color: aquamarine;  */
    
 }
 
 .youtube-video-container{
-     /* flex: 0 1 calc(13.33% - 0px); */
     margin-bottom: 20px;
 }
 .details h3{
-
     color: #fff;
     padding: 1px;
 }
 .sub-details{
-    background-color: pink;
+    /* background-color: pink; */
     display: flex;
-     justify-content: space-between;
+    justify-content: space-between;
 }
 .title{
     display: flex;
@@ -175,56 +207,46 @@ p{
 .right-nav {
     flex: 1;
     text-align: center;
-    padding: 0 10px; /* Add padding for spacing */
+    padding: 0 10px; 
 }
 
 .right-nav {
     text-align: right;
-    padding-right: 25px; /* Add extra padding to the right */
+    padding-right: 25px;
 }
+
 /* Media queries for responsiveness */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 519px) {
     .icon {
         display: flex;
         align-items: center;
         justify-content: center; 
     }
-    
 
     .nav-left,
     .nav-middle,
     .right-nav {
         flex: 1;
         text-align: center;
-        padding: 0 2px; /* Adjust padding for spacing */
-        font-size: 0.8em; /* Reduce font size */
-    }
+        padding: 0 2px;
+        font-size: 0.8em; 
     }
 
     #search-bar {
         width: 100%;
         margin: 10px 0;
     }
-
-     /* #horizontal-navbar {
+     #responsive-horizonatal-navbar2 {
         display: none;
+        background-color: pink;
+     }
+   #responsive-horizonatal-navbar1 {
+        display: flex; 
     }
-    .icons-horizontal, .icons-horizontal1{
-        display: none;
-    } */
-    #vertical-navbar{
-        display: flex;
-        width:64px;
-        height:296px;
-        padding: 0;
-    }
-.icons-vertical{
-    display:inline-block;
+    .icons-horizontal1 #arrow-icon {
 
-    width: 60px;
-    height: 74px;
-    padding: 0;
+    display: flex;
 }
-    
-  
+}
 
+    
