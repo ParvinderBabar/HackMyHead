@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "HackMyHead",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"editor.wordWrap": "on"
+	}
+}

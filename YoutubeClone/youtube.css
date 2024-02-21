@@ -20,8 +20,12 @@ body{
 .icon{
    margin-left: 25px;
    color:#fff;
+   /* background-color: aqua; */
+   display: flex;
+   align-items: center;
 
 }
+
 .fa-bars{
     color:#fff;
     font-size:25px;
@@ -29,6 +33,7 @@ body{
     height:40px;
 
 }
+
 #nav-middle{
 display: flex;
 justify-content: center;
