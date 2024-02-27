@@ -1,0 +1,11 @@
+#square {
+  width: 40px;
+  height: 40px;
+  background-color: blue;
+}
+.redsquare {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  margin: 5px;
+}

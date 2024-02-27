@@ -1,6 +1,10 @@
-const task = prompt("What task would you like to run ? (sum, convert, low, wordCounter, random, randomRange, capitalize, quit)");
 
-if (task === "sum") {
+while (true) {
+    const task = prompt("What task would you like to run ? (sum, convert, low, wordCounter, random, randomRange, capitalize, quit)");
+if (task === "quit") {
+    break;
+    }
+    if (task === "sum") {
     // alert("sum");
 
    
@@ -53,6 +57,10 @@ if (task === "capitalize") {
     alert(newSentence)
     
 }
+}
+
+
+
 // if (task === "quit")
 // {
 //     while (true) {
