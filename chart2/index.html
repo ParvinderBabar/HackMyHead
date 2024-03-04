@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input Sleep Time</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Input Sleep Time</h1>
+
+    <!-- Fell asleep time input -->
+    <label for="fell-asleep-time">Fell Asleep Time:</label>
+    <input type="datetime-local" id="fell-asleep-time" />
+    <br />
+
+    <!-- Woke up time input -->
+    <label for="woke-up-time">Woke Up Time:</label>
+    <input type="datetime-local" id="woke-up-time" />
+    <br />
+
+    <!-- Note input -->
+    <label for="extra-notes">Extra Notes:</label>
+    <textarea id="extra-notes" rows="4" cols="50"></textarea>
+    <br />
+
+    <button type="button" id="add-sleep-time">Add Sleep Time</button>
+
+    <div id="total-hours"></div>
+
+    <!-- Chart container -->
+    <div style="max-width: 600px">
+      <canvas id="sleepAnalysisChart"></canvas>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        let sleepRecords = [] // Array to store sleep records
+        let sleepAnalysisChart // Variable to hold the chart instance
+        let totalHours = 0 // Total sleep hours
+
+        document
+          .getElementById('add-sleep-time')
+          .addEventListener('click', function () {
+            // Get selected sleep and wake-up times
+            const fellAsleepDateTime = new Date(
+              document.getElementById('fell-asleep-time').value
+            ).getTime()
+            const wokeUpDateTime = new Date(
+              document.getElementById('woke-up-time').value
+            ).getTime()
+
+            // // Calculate sleep duration in hours
+            // let sleepDuration =
+            //   (wokeUpDateTime - fellAsleepDateTime) / (1000 * 60 * 60)
+
+            // // Check if sleep duration exceeds 24 hours
+            // if (sleepDuration + totalHours > 24) {
+            //   alert(
+            //     'Total sleep hours cannot exceed 24 hours in a day. Please check with a pediatrician.'
+            //   )
+            //   return // Exit the function without adding the entry
+            // }
+            // Calculate sleep duration in hours
+            let sleepDuration =
+              (wokeUpDateTime - fellAsleepDateTime) / (1000 * 60 * 60)
+            // Check if sleep duration is negative
+            if (sleepDuration < 0) {
+              alert(
+                'Invalid sleep time. Please make sure the wake-up time is after the fell asleep time.'
+              )
+              return
+              // Exit the function without adding the entry
+            }
+
+            // Check if the same date already exists in records
+            const sameDateRecordIndex = sleepRecords.findIndex(record =>
+              isSameDate(new Date(record.date), new Date(fellAsleepDateTime))
+            )
+            if (sameDateRecordIndex !== -1) {
+              // Update existing record
+              sleepRecords[sameDateRecordIndex].duration += sleepDuration
+            } else {
+              // Add new record
+              sleepRecords.push({
+                date: fellAsleepDateTime,
+                duration: sleepDuration,
+                notes: document.getElementById('extra-notes').value
+              })
+            }
+
+            // Update total sleep hours
+            totalHours += sleepDuration
+
+            // Update total hours display
+            document.getElementById(
+              'total-hours'
+            ).innerText = `Total Sleep Hours: ${totalHours.toFixed(2)}`
+
+            // Update chart with all sleep records
+            updateChart(sleepRecords)
+          })
+
+        // Function to update the chart
+        function updateChart(data) {
+          if (!sleepAnalysisChart) {
+            const ctx = document
+              .getElementById('sleepAnalysisChart')
+              .getContext('2d')
+            sleepAnalysisChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: data.map(record => formatDate(new Date(record.date))), // Use formatted date as labels
+                datasets: [
+                  {
+                    label: 'Hours',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    data: data.map(record => record.duration)
+                  }
+                ]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text: 'Hours'
+                    }
+                  }
+                }
+              }
+            })
+          } else {
+            // Update existing chart with new data
+            sleepAnalysisChart.data.labels = data.map(record =>
+              formatDate(new Date(record.date))
+            )
+            sleepAnalysisChart.data.datasets[0].data = data.map(
+              record => record.duration
+            )
+            sleepAnalysisChart.update()
+          }
+        }
+
+        // Function to format date
+        function formatDate(date) {
+          const options = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric'
+          }
+          return date.toLocaleDateString('en-US', options)
+        }
+
+        // Function to check if two dates are on the same day
+        function isSameDate(date1, date2) {
+          return (
+            date1.getFullYear() === date2.getFullYear() &&
+            date1.getMonth() === date2.getMonth() &&
+            date1.getDate() === date2.getDate()
+          )
+        }
+      })
+    </script>
+  </body>
+</html>
